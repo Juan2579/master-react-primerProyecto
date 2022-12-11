@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { saveInStorage } from '../helpers/saveInStorage'
 
-export const Crear = ({setList}) => {
+export const Crear = ({list ,setList}) => {
 
   const tituloComponente = "Añadir pelicula"
 
@@ -37,6 +37,9 @@ export const Crear = ({setList}) => {
     //Guardar en el almacenamiento local
     saveInStorage("movies", movie)
 
+
+    target.titulo.value = ""
+    target.descripcion.value = ""
   }
 
   
@@ -44,7 +47,7 @@ export const Crear = ({setList}) => {
   return (
     <div className="add">
       <h3 className="title">{tituloComponente}</h3>
-      {(title && description) && 
+      {(title && description && list.length >=1) && 
         <strong>
           Has creado la peli {title}
         </strong>}
